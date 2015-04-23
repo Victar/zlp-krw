@@ -1,5 +1,6 @@
 package me.victar.euler;
 
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -9,7 +10,7 @@ public class Finder {
 
 	private final  int power;
 	private int range;
-	private Map<Integer, Integer> valuesMap;
+	private Map<Integer, BigInteger> valuesMap;
 	
 	public Finder(int power , int range) {
 		this.power = power;
@@ -18,43 +19,41 @@ public class Finder {
 	}
 	
 	protected void findEulersChains(){
-		for (int i= 0; i> range; i ++ ){
+		for (int i= 1; i< range; i ++ ){
 			System.out.println("#### "+i+" ####");
-			search(getPowNumber(i),i,0,new ArrayList<Integer>());
+			search(getPowNumber(i),i,BigInteger.ZERO,new ArrayList<BigInteger>());
 		}
 	}
 
 	protected void findEulersChains(int i){
 		System.out.println("#### "+i+" ####");
-		search(getPowNumber(i),i,0,new ArrayList<Integer>());
+		search(getPowNumber(i),i,BigInteger.ZERO,new ArrayList<BigInteger>());
 	}
 
-	protected void search(int powNumber, int number, int currentSumm, List<Integer> currentChain){
-		if (currentSumm > powNumber || currentChain.size()>power-1){
+	protected void search(BigInteger powNumber, int number, BigInteger currentSumm, List<BigInteger> currentChain){
+		if (currentSumm.compareTo(powNumber)>0 || currentChain.size()>power-1){
 			//System.out.println("NOT valid For number  " + number + " Chain is: "+ currentChain);
 
 			return;
 		}
-		if (currentSumm == powNumber) {
+		if (currentSumm.compareTo(powNumber) == 0) {
 			System.out.println("For number  " + number + " Chain is: "+ currentChain);
 			return;
-		}if (currentSumm < powNumber){
-//			System.out.println("NOT valid For number  " + number + " Chain is: "+ currentChain);
-		
+		}if (currentSumm.compareTo(powNumber) < 0){
 			List<Integer> validNumbersList= getNextValidNumber(powNumber, number, currentChain);
 			for (int i=0; i< validNumbersList.size(); i++){
 				Integer validNumber = validNumbersList.get(i);
-				List<Integer> currentChainNew = new ArrayList<Integer>(currentChain);
+				List<BigInteger> currentChainNew = new ArrayList<BigInteger>(currentChain);
 				currentChainNew.add(getPowNumber(validNumber));
-				Integer currentSummNew = currentSumm+ getPowNumber(validNumber);
+				BigInteger currentSummNew = currentSumm.add(getPowNumber(validNumber));
 				search(powNumber, number, currentSummNew, currentChainNew);
 			}
 		}
 		
 	}
-	protected List<Integer> getNextValidNumber(int powNumber, int number, List<Integer> currentChain ){
+	protected List<Integer> getNextValidNumber(BigInteger powNumber, int number, List<BigInteger> currentChain ){
 		List<Integer> validNumbersList= new ArrayList<Integer>();
-		for (int i=26; i< number; i++){
+		for (int i=0; i< number; i++){
 			if ( !currentChain.contains(getPowNumber(i))){
 				validNumbersList.add(i);
 			}
@@ -63,22 +62,28 @@ public class Finder {
 	}
 	
 	protected void initRange (){
-		valuesMap = new HashMap<Integer, Integer>();
+		valuesMap = new HashMap<Integer, BigInteger>();
 		for (int i=1; i< range; i++){
-			valuesMap.put(i, getRealPowNumber(i));
+			valuesMap.put(i, getRealPowNumber(BigInteger.valueOf(i)));
 		}
 	}
-	public int getPowNumber(int i) {
+	public BigInteger getPowNumber(int i) {
 			return valuesMap.get(i);
 	}
 	
-	public int getRealPowNumber(int i){
-		return (int) Math.pow(i, power);
+	public BigInteger getRealPowNumber(BigInteger number ){
+		BigInteger result = number ;
+		for (int i = 0; i< power-1; i ++){
+			result = 	result.multiply(number);
+		}
+		return result;
 	}
  
 	public static void main(String[] args) {
-		Finder finder = new Finder(5, 145);
+		Finder finder = new Finder(5, 150);
 		finder.findEulersChains(144);
+//		finder.findEulersChains();
+		
 	}
 	
 	
