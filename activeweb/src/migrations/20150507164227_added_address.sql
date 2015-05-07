@@ -1,0 +1,2 @@
+ALTER TABLE `persons`
+	ADD COLUMN `address` VARCHAR(200) NOT NULL AFTER `email`;
