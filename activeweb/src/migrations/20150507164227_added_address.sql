@@ -1,2 +1,1 @@
-ALTER TABLE `persons`
-	ADD COLUMN `address` VARCHAR(200) NOT NULL AFTER `email`;
+ALTER TABLE `people` ADD COLUMN `address` VARCHAR(200) DEFAULT NULL AFTER `email`;

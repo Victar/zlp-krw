@@ -1,16 +1,14 @@
 package app.controllers;
 
-import org.javalite.activeweb.ControllerSpec;
+import org.javalite.activeweb.DBControllerSpec;
 import org.junit.Test;
 
-
-public class HomeControllerSpec extends ControllerSpec {
+public class PeopleControllerSpec extends DBControllerSpec {
 
     @Test
     public void shouldShowHomePage() {
         request().integrateViews().get("index");
         a(statusCode()).shouldBeEqual(200);
-        a(responseContent()).shouldContain("<h1>Marketing stuff!</h1>");
     }
 
 }

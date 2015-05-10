@@ -1,9 +1,5 @@
-<div class="jumbotron">
-    <h1>Marketing ${name!}!</h1>
-    <p><a class="btn btn-lg btn-success" href="#" role="button">Get started today</a></p>
-</div>
+<@content for="title">Demo App</@content>
 
-<#list persons as person>
-<hr>
-${person.fisrt_name}
-</#list>
+<ul>
+    <li><@link_to controller="People">Sample phone book</@link_to></li>
+</ul>

@@ -6,4 +6,6 @@
 .classpath
 .settings/
 .project
-.module-cache/
+.module-cache
+*.iml
+.idea/
