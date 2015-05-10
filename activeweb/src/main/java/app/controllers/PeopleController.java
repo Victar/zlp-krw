@@ -14,6 +14,12 @@ public class PeopleController  extends AppController {
     	view("people", people);
     }
     
+    public void angular(){
+    	List <Person> people = Person.findAll().orderBy(Person.FIELD_LAST_NAME);
+    	view("people", people);
+    	render().noLayout();
+    }
+    
     public void newForm(){
     	
     }
