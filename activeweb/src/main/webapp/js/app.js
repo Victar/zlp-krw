@@ -1,10 +1,32 @@
 var app = angular.module('phonebook', []);
 
+app.controller('PhonebookController', function ($scope, JSONService ){
+	var promise = JSONService.list();
+	promise.then(function (data){
+		$scope.persons = data;
+		$scope.view = 'table';
+		console.log(data);
+	})
+})
+app.service('JSONService' , function ($http, $q){
+	
+	var deffered = $q.defer();
+	$http.get('/Json').then(function (data){
+		deffered.resolve(data.data);
+	});
+	
+	this.list = function (){
+		return deffered.promise;
+	}
+});
+
+/**
 app.controller('PhonebookController', ['$scope',
-    'DataService', function(scope, dataService){
+    'JSONService', function(scope, dataService){
     scope.persons = dataService.list();
     scope.view = 'table';
 }]);
+
 
 app.directive('pbPersonCard', function(){
     return {
@@ -16,6 +38,7 @@ app.directive('pbPersonCard', function(){
     };
 });
 
+
 app.service('DataService', [function(){
     function list(){
         return [
@@ -26,9 +49,9 @@ app.service('DataService', [function(){
                 "photo":"iron-man.jpeg"
             },
             {
-                "name":"Баба Яга",
+                "name":"пїЅпїЅпїЅпїЅ пїЅпїЅпїЅ",
                 "phone":"123-00-00",
-                "company":"Дремучий лес",
+                "company":"пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ",
                 "photo":"baba-yaga.jpg"
             },
             {
@@ -86,4 +109,4 @@ app.service('DataService', [function(){
         list: list
     };
 }]);
-
+**/

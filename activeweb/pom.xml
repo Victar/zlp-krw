@@ -61,6 +61,9 @@
 				<artifactId>jetty-maven-plugin</artifactId>
                 <version>9.2.1.v20140609</version>
 				<configuration>
+					<webAppConfig>
+						<defaultsDescriptor>src/main/resources/webdefault.xml</defaultsDescriptor>
+					</webAppConfig>
 					<scanIntervalSeconds>10000</scanIntervalSeconds>
 					<systemProperties>
 						<systemProperty>

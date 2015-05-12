@@ -35,4 +35,6 @@ public class PeopleController  extends AppController {
     		render("new_form");
     	}
     }
+    
+
 }
