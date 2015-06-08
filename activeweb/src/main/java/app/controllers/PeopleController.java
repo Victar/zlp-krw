@@ -20,6 +20,12 @@ public class PeopleController  extends AppController {
     	render().noLayout();
     }
     
+    public void sample(){
+    	render().noLayout();
+
+    }
+    
+    
     public void newForm(){
     	
     }
