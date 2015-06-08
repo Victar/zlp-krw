@@ -1,13 +1,16 @@
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<title>Phonebook</title>
-	<link rel="stylesheet"	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
-	<script type="text/javascript"	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.js"></script>
-	<script type="text/javascript" src="${context_path}/js/app.js"></script>
+<meta charset="UTF-8">
+<title>Phonebook</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+<script type="text/javascript"
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.js"></script>
+<script type="text/javascript" src="${context_path}/js/app.js"></script>
 </head>
 <body ng-app="phonebook">
-	<div class="container" ng-controller="PhonebookController" ng-switch on="view">
+	<div class="container" ng-controller="PhonebookController" ng-switch
+		on="view">
 		<div class="row">
 			<div class="col-lg-6">
 				<div class="input-group">
@@ -50,6 +53,25 @@
 				</tr>
 			</tbody>
 		</table>
+
+		<form name="registerForm" ng-controller = "RegisterController as registerCtrl" 
+								  ng-submit = "registerCtrl.doRegistration(user)">
+			<blockquote>
+				<b>{{user.first_name}} {{user.last_name}} {{user.address}}
+			</blockquote>
+			<input ng-model="user.first_name" type="text" />
+			<input ng-model="user.last_name" type="text" />
+			<input ng-model="user.address" type="url" />
+			<input type="submit" value="Register" />
+		</form>
+		<!--
+		<button ng-click="count = count+1" ng-init="count=0">Add</button>
+		<input type="text" ng-model="test_model"> <span> count:
+			{{count}} , {{test_model}} </span>
+
+		<div ng-controller="StoreController as store">
+			{{store.data.price}}</div>
+		<hr />-->
 	</div>
 </body>
 </html>
