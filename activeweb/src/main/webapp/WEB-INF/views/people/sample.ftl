@@ -20,7 +20,7 @@
 			<button ng-click="add(valA,valB);">Sum</button>
 			<button ng-click="multiple(valA,valB);">Mult</button>
 		</p>
-		</di v>
+		</div>
 </body>
 </html>
 <script type="text/javascript">

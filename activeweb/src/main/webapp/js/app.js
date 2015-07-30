@@ -17,14 +17,21 @@ app.controller('PhonebookController', function ($scope, JSONService ){
 
 
 app.controller('RegisterController', function($http){
+	
 	this.register = {};
 	this.doRegistration = function(user){
-		//Todo
 		
-		//this.register = {};
-		$http.post('people/create' , user);
+	    $http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=utf-8';
+		$http({
+            method: "post",
+            url: "people/create",
+            data: $.param(user)
+        }).success(function(data,status,headers,config){
+        	console.log("ToDo handle success");
+        }).error(function(data,status,headers, config){
+         	console.log("ToDo handle error");
+        })
 	}
-	
 })
 app.service('JSONService' , function ($http, $q){
 	

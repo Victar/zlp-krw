@@ -56,22 +56,17 @@
 
 		<form name="registerForm" ng-controller = "RegisterController as registerCtrl" 
 								  ng-submit = "registerCtrl.doRegistration(user)">
+			<script>
+				
+			</script>
 			<blockquote>
 				<b>{{user.first_name}} {{user.last_name}} {{user.address}}
 			</blockquote>
-			<input ng-model="user.first_name" type="text" />
-			<input ng-model="user.last_name" type="text" />
-			<input ng-model="user.address" type="url" />
+			<input ng-model="user.first_name" type="text"  value="Victar" />
+			<input ng-model="user.last_name" type="text" value="Kadol"/>
+			<input ng-model="user.address" type="url" value="http://victar.me"/>
 			<input type="submit" value="Register" />
 		</form>
-		<!--
-		<button ng-click="count = count+1" ng-init="count=0">Add</button>
-		<input type="text" ng-model="test_model"> <span> count:
-			{{count}} , {{test_model}} </span>
-
-		<div ng-controller="StoreController as store">
-			{{store.data.price}}</div>
-		<hr />-->
 	</div>
 </body>
 </html>
