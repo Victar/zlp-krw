@@ -1,44 +1,39 @@
 package me.victar.euler;
 
-import static org.junit.Assert.assertArrayEquals;
-import static org.junit.Assert.assertEquals;
-
-import java.util.HashMap;
-import java.util.Map;
-
 import org.junit.Test;
+
+import java.math.BigInteger;
+
+import static org.junit.Assert.*;
 
 public class EulerTest {
 
+
 	@Test
-	public void getEuler(){
-		assertEquals(new Euler(5).getPower(), 5);
-	};
-	
-	@Test
-	public void getEulerNumberPowered(){
-		assertEquals(new Euler(2).getPower(), 2);
-		assertEquals(new Euler(2).getPowNumber(5), 25);
-		assertEquals(new Euler(3).getPowNumber(3), 27);
+	public void isInRange(){
+		Euler euler = new Euler(3, 50);
+		assertTrue(euler.isInRange(0));
+		assertFalse(euler.isInRange(52));
 	}
+
 	@Test
-	public void findCourtegeMinLength(){
-		assertEquals(new Euler(2).getCortegeMinLength(), 2);
-	}
-	
-	@Test
-	public void checkCouregeSum(){
-		Map map = new HashMap<Integer, Integer>();
-		map.put(2, 4);
-		map.put(3, 9);
-		
-		assertEquals(new Euler(2).getCortegeSum(map), 13);
-	}
-	@Test
-	public void findCourtege(){
-		assertArrayEquals(new Euler(2).getCortege(5), new int[]{3,4});
-	//	assertArrayEquals(new Euler(2).getCortege(10), new int[]{6,8});
+	public void pow(){
+		Euler euler = new Euler(2, 50);
+		assertEquals(new BigInteger("4"),euler.pow(2));
+		assertEquals(new BigInteger("25"),euler.pow(5));
+		Euler euler3 =new Euler(3,50);
+		assertEquals(new BigInteger("27"), euler3.pow(3));
+		assertEquals(new BigInteger("64"), euler3.pow(4));
+		Euler euler10 = new Euler(10,50);
+		assertEquals(new BigInteger("1024"), euler10.pow(2));
+		assertEquals(new BigInteger("59049"), euler10.pow(3));
 
 	}
-	
+	@Test
+	public void isEulerChain(){
+		Euler euler = new Euler(3, 50);
+		assertTrue(euler.hasEuler(6));
+
+	}
+
 }
