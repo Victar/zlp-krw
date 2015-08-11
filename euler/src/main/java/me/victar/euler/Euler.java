@@ -55,7 +55,7 @@ public class Euler {
 			return false;
 		}
 		if (currentSumm.compareTo(powNumber) == 0) {
-			System.out.println("For number  " + number + " Chain is: "+ currentChain);
+			//System.out.println("For number  " + number + " Chain is: "+ currentChain);
 			return true;
 		}if (currentSumm.compareTo(powNumber) < 0){
 			List<Integer> validNumbersList= getNextValidNumber(powNumber, number, currentChain);
