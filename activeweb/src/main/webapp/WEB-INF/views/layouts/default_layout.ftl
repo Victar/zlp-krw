@@ -7,7 +7,6 @@
     <LINK href="${context_path}/css/main.css" rel="stylesheet" type="text/css"/>
     <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
-    <script src="${context_path}/js/aw.js" type="text/javascript"></script>
     <title>ActiveWeb - <@yield to="title"/></title>
 </head>
 <body>

@@ -7,6 +7,7 @@
 	<script type="text/javascript" src="${context_path}/js/app.js"></script>
 </head>
 <body ng-app="phonebook">
+
 	<div class="container" ng-controller="PhonebookController" ng-switch on="view">
 		<div class="row">
 			<div class="col-lg-6">
